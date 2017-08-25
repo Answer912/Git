@@ -1,0 +1,153 @@
+// 初始化git
+
+    初始化设置：git config --global user.name "Your Name"
+
+    初始化设置：git config --global user.email "email@example.com" 
+
+    获取密匙：ssh-keygen -t rsa -C "answer912@outlook.com" 
+
+    显示公共密匙：cat ~/.ssh/id_rsa.pub               
+
+// 初始化仓库
+
+    初始化仓库：git init
+
+    解决init报错：git config core.autocrlf false
+
+// 克隆远程库
+
+    git clone URL   // URL是你远程库的地址
+
+                    // 克隆完成后，本地会出现你克隆的文件夹
+
+    cd xxx          // 进入你克隆的文件件
+
+    ls              // 显示文件夹下的所有目录
+    
+    npm install     // 记得安装依赖
+
+// 添加远程库
+
+    git remote add origin URL       // 本地库下运行，关联至远程库
+    // 远程库的名字就是origin，这是Git默认的叫法
+
+    git push -u origin master       // 本地库内容推送至远程库
+    // 由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令(git push origin master )。
+
+// BUG分支
+    暂存分支：git stash          // 遇到突发情况，分支又无法提交时，先暂存，处理情况完后，再回到分支
+
+    查看工作现场：git stash list
+
+    // 工作现场还在，Git把stash内容存在某个地方了，但是需要恢复一下，有两个办法： 
+
+    // 一是用git stash apply恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除； 
+
+    // 另一种方式是用git stash pop，恢复的同时把stash内容也删了：
+
+    // 当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场。 
+
+// Feature分支
+    git checkout -b feature-vulcan          // 创建分支并进入
+    git branch -d feature-vulcan            // 删除分支
+
+// 标签
+
+    命令git tag <name>用于新建一个标签，默认为HEAD，也可以指定一个commit id； 
+
+    • git tag -a <tagname> -m "blablabla..."可以指定标签信息； 
+
+
+    • git tag -s <tagname> -m "blablabla..."可以用PGP签名标签； 
+
+    • 命令git tag可以查看所有标签。 
+
+    • 命令git push origin <tagname>可以推送一个本地标签； 
+
+
+    • 命令git push origin --tags可以推送全部未推送过的本地标签； 
+
+
+    • 命令git tag -d <tagname>可以删除一个本地标签； 
+
+
+    • 命令git push origin :refs/tags/<tagname>可以删除一个远程标签
+
+// 配置别名
+    git config --global alias.co checkout
+    git config --global alias.ci commit
+    git config --global alias.br branch 
+    git config --global alias.st status 
+    git config --global alias.unstage 'reset HEAD' 
+    git config --global alias.last 'log -1' 
+
+    git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit" 
+
+// 多人协作
+    
+    查看远程库信息，使用git remote -v； 
+
+    • 本地新建的分支如果不推送到远程，对其他人就是不可见的； 
+
+    • 从本地推送分支，使用git push origin branch-name，如果推送失败，先用git pull抓取远程的新提交； 
+
+    • 在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致； 
+
+    • 建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name； 
+
+    • 从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。 
+
+
+
+
+
+
+创建远程分支到本地：git checkout -b xxx origin/xxx
+
+设置本地分支与远程分支链接：git branch --set-upstream xxx origin/xxx
+
+查看远程库的信息：git remote -v
+
+指定本地分支推送至远程库：git push origin xxx 
+
+查看仓库的状态：git status
+
+向暂存区中添加文件：git add XX
+
+保存仓库的历史记录：git commit -m "注释信息"
+
+提交至服务器：git push
+
+查看提交历史：git log
+
+查看命令历史：git reflog
+
+查看修改内容：git diff HEAD
+
+删除文件：git rm xxx
+
+回溯版本:git reset --hard Number
+
+撤销当前所有操作：git reset --
+
+撤销工作区修改：git checkout -- file
+
+撤销暂存区修改：git reset HEAD file
+
+查看分支：git branch 
+
+创建分支：git branch <name> 
+
+切换分支：git checkout <name> 
+
+创建+切换分支：git checkout -b <name> 
+
+合并某分支到当前分支：git merge <name> 
+
+删除分支：git branch -d <name> 
+
+抓取分支合并：git pull 
+
+分支合并图：git log --graph
+
+
