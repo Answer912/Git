@@ -97,57 +97,55 @@
 
     • 从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。 
 
+// Git指令
 
+    创建远程分支到本地：git checkout -b xxx origin/xxx
 
+    设置本地分支与远程分支链接：git branch --set-upstream xxx origin/xxx
 
+    查看远程库的信息：git remote -v
 
+    指定本地分支推送至远程库：git push origin xxx 
 
-创建远程分支到本地：git checkout -b xxx origin/xxx
+    查看仓库的状态：git status
 
-设置本地分支与远程分支链接：git branch --set-upstream xxx origin/xxx
+    向暂存区中添加文件：git add XX
 
-查看远程库的信息：git remote -v
+    保存仓库的历史记录：git commit -m "注释信息"
 
-指定本地分支推送至远程库：git push origin xxx 
+    提交至服务器：git push
 
-查看仓库的状态：git status
+    查看提交历史：git log
 
-向暂存区中添加文件：git add XX
+    查看命令历史：git reflog
 
-保存仓库的历史记录：git commit -m "注释信息"
+    查看修改内容：git diff HEAD
 
-提交至服务器：git push
+    删除文件：git rm xxx
 
-查看提交历史：git log
+    回溯版本:git reset --hard Number
 
-查看命令历史：git reflog
+    撤销当前所有操作：git reset --
 
-查看修改内容：git diff HEAD
+    撤销工作区修改：git checkout -- file
 
-删除文件：git rm xxx
+    撤销暂存区修改：git reset HEAD file
 
-回溯版本:git reset --hard Number
+    查看分支：git branch 
 
-撤销当前所有操作：git reset --
+    创建分支：git branch <name> 
 
-撤销工作区修改：git checkout -- file
+    切换分支：git checkout <name> 
 
-撤销暂存区修改：git reset HEAD file
+    创建+切换分支：git checkout -b <name> 
 
-查看分支：git branch 
+    合并某分支到当前分支：git merge <name> 
 
-创建分支：git branch <name> 
+    删除分支：git branch -d <name> 
 
-切换分支：git checkout <name> 
+    抓取分支合并：git pull 
 
-创建+切换分支：git checkout -b <name> 
+    分支合并图：git log --graph
 
-合并某分支到当前分支：git merge <name> 
-
-删除分支：git branch -d <name> 
-
-抓取分支合并：git pull 
-
-分支合并图：git log --graph
 
 
