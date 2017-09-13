@@ -34,6 +34,40 @@
     git push -u origin master       // 本地库内容推送至远程库
     // 由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令(git push origin master )。
 
+// git支持很多种工作流程，我们采用的一般是这样，远程创建一个主分支，本地每人创建功能分支，日常工作流程如下：
+
+    去自己的工作分支
+    $ git checkout work
+
+    工作
+    ....
+
+    提交工作分支的修改
+    $ git commit -a
+
+    回到主分支
+    $ git checkout master
+
+    获取远程最新的修改，此时不会产生冲突
+    $ git pull
+
+    回到工作分支
+    $ git checkout work
+
+    用rebase合并主干的修改，如果有冲突在此时解决
+    $ git rebase master
+
+    回到主分支
+    $ git checkout master
+
+    合并工作分支的修改，此时不会产生冲突。
+    $ git merge work
+
+    提交到远程主干
+    $ git push
+
+    这样做的好处是，远程主干上的历史永远是线性的。每个人在本地分支解决冲突，不会在主干上产生冲突。
+
 // BUG分支
     暂存分支：git stash          // 遇到突发情况，分支又无法提交时，先暂存，处理情况完后，再回到分支
 
@@ -82,7 +116,7 @@
     git config --global alias.last 'log -1' 
 
     git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit" 
-    
+
 // 多人协作
     
     查看远程库信息，使用git remote -v； 
@@ -97,55 +131,60 @@
 
     • 从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。 
 
-// Git指令
+    1、创建本地分支  git checkout -b xxx
+    2、推送本地分支至服务器  git push origin xxx
+    3、关联本地与服务器分支  git branch --set-upstream xxx origin/xxx
+    4、git  add .     git commit  git push
 
-    创建远程分支到本地：git checkout -b xxx origin/xxx
 
-    设置本地分支与远程分支链接：git branch --set-upstream xxx origin/xxx
 
-    查看远程库的信息：git remote -v
 
-    指定本地分支推送至远程库：git push origin xxx 
+创建远程分支到本地：git checkout -b xxx origin/xxx
 
-    查看仓库的状态：git status
+设置本地分支与远程分支链接：git branch --set-upstream xxx origin/xxx
 
-    向暂存区中添加文件：git add XX
+查看远程库的信息：git remote -v
 
-    保存仓库的历史记录：git commit -m "注释信息"
+指定本地分支推送至远程库：git push origin xxx 
 
-    提交至服务器：git push
+查看仓库的状态：git status
 
-    查看提交历史：git log
+向暂存区中添加文件：git add XX
 
-    查看命令历史：git reflog
+保存仓库的历史记录：git commit -m "注释信息"
 
-    查看修改内容：git diff HEAD
+提交至服务器：git push
 
-    删除文件：git rm xxx
+查看提交历史：git log
 
-    回溯版本:git reset --hard Number
+查看命令历史：git reflog
 
-    撤销当前所有操作：git reset --
+查看修改内容：git diff HEAD
 
-    撤销工作区修改：git checkout -- file
+删除文件：git rm xxx
 
-    撤销暂存区修改：git reset HEAD file
+回溯版本:git reset --hard Number
 
-    查看分支：git branch 
+撤销当前所有操作：git reset --
 
-    创建分支：git branch <name> 
+撤销工作区修改：git checkout -- file
 
-    切换分支：git checkout <name> 
+撤销暂存区修改：git reset HEAD file
 
-    创建+切换分支：git checkout -b <name> 
+查看分支：git branch 
 
-    合并某分支到当前分支：git merge <name> 
+创建分支：git branch <name> 
 
-    删除分支：git branch -d <name> 
+切换分支：git checkout <name> 
 
-    抓取分支合并：git pull 
+创建+切换分支：git checkout -b <name> 
 
-    分支合并图：git log --graph
+合并某分支到当前分支：git merge <name> 
 
+删除分支：git branch -d <name> 
+
+抓取分支合并：git pull 
+
+分支合并图：git log --graph
 
 
